@@ -1,0 +1,234 @@
+/*! HTML5 Boilerplate v4.3.0 | MIT License | http://h5bp.com/ */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    -webkit-user-select:none;
+    -webkit-tap-highlight-color:rgba(0,0,0,0);
+    -webkit-text-size-adjust:none;
+}
+
+html, button, input, select, textarea {
+    color: #222;
+}
+
+html {
+    font-size: 1em;
+    line-height: 1.4;
+}
+
+::-moz-selection {
+    background: #b3d4fc;
+    text-shadow: none;
+}
+
+::selection {
+    background: #b3d4fc;
+    text-shadow: none;
+}
+
+hr {
+    display: block;
+    height: 1px;
+    border: 0;
+    border-top: 1px solid #ccc;
+    margin: 1em 0;
+    padding: 0;
+}
+
+/*audio, canvas, img, video {
+    vertical-align: middle;
+}*/
+
+fieldset {
+    border: 0;
+    margin: 0;
+    padding: 0;
+}
+
+textarea {
+    resize: vertical;
+}
+
+.browsehappy {
+    margin: 0.2em 0;
+    background: #ccc;
+    color: #000;
+    padding: 0.2em 0;
+}
+
+
+/* ===== Initializr Styles ==================================================
+   Author: Jonathan Verrecchia - verekia.com/initializr/responsive-template
+   ========================================================================== */
+
+html {height:100%; width: 100%;}
+
+body {
+    font: 16px/1.6 "Calluna",georgia, sans-serif;
+    color: rgba(0,0,0,0.7);
+    background-color: whitesmoke;
+    height:100%; width: 100%;
+}
+
+a {color: rgba(0,0,0,0.9);}
+
+h1, h2, h3, h4 {
+    font-family: "AkzidenzGrotesk", Helvetica, sans-serif;
+    font-weight: light;
+}
+
+h1 {
+    font-size: 2em;
+    margin: 0.5em 0;
+}
+
+p {
+    margin: 0.5em 0;
+}
+
+.workButton {
+    margin: 2em -1em 2em 0;
+    background-color: #f1efef;
+    padding: 0.5em 5em 0.7em 2em;
+    font-size: 1.2em;
+    position: absolute;
+    right: 0px;
+    text-decoration: none;
+    border-radius: 10px;
+}
+
+.main {
+    padding: 20px 0;
+}
+
+/*Portfolio Slides ---------------------------------*/
+
+#wrapper {
+    position:fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right:0;
+}
+
+#slides li {
+    display: inline-block;
+    background-size: contain;
+    position: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    top: 20px; right: 0; bottom: 70px; left: 0;
+}
+
+#slides li.jackbeck {
+    background-image: url(../img/jackbeck.png);
+}
+#slides li.bitcoin {
+    background-image: url(../img/jackbeck.png);
+}
+#slides li.luckington {
+    background-image: url(../img/jackbeck.png);
+}
+
+#slides li.sam {
+    margin: -20px 0 -70px 0;
+}
+
+
+.sam .textWrapper {
+    max-width: 24em;
+    margin: auto;
+}
+
+img.home {
+    max-height:100%; 
+    max-width:100%; 
+    width:auto; 
+    vertical-align: middle; 
+    float: left;
+}
+
+/*---------*/
+
+#nav {
+    text-align: center;
+    position: absolute;
+    left: 50%;
+    bottom: 32px;
+    white-space: nowrap;
+}
+
+#nav li {
+    display: inline-block;
+    padding: 0 20px;
+    cursor: default;
+    vertical-align: top;
+}
+
+#nav li a {
+    display: block;
+    font-size: 0.8em;
+    text-decoration: none;
+    opacity: 0.7;
+}
+
+.rightPanel {
+    display: flex;
+    background: white;
+    position: absolute;
+    top: 0; right: 30px;
+    width: 100px;
+    height: 100%;
+    border-left: 1px white solid;
+    box-shadow: 0px 0px 2px 0px rgba(0,0,0,0.38), 0px 0px 15px 0px rgba(0,0,0,0.11);
+}
+
+
+
+
+
+
+/* ==========================================================================
+   Media Queries
+   ========================================================================== */
+
+@media only screen and (min-width: 480px) {
+
+body {
+    font-size: 1.1em;
+}
+
+img.home {
+    dsplay: block;
+}
+
+@media only screen and (min-width: 768px) {
+
+   body {
+    overflow-y: hidden;
+    font-size: 1.1em;
+   }
+
+   .main-container {
+    margin: 0;
+   }
+   .main {
+    margin: 0;
+   }
+
+
+@media only screen and (min-width: 1140px) {
+
+/* ===============
+    Maximal Width
+   =============== */
+
+    .wrapper {
+        width: 1026px; /* 1140px - 10% for margins */
+        margin: 0 auto;
+    }
+}ie7 .title {
+    padding-top: 20px;
+}
