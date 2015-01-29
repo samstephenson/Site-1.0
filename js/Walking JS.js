@@ -20,9 +20,15 @@ var lastX = 0;
 var panVelocity = 0;
 var isDragging = false;
 
+
+
+// DOM time!---------------------------------------
+
 $(document).ready(function($) {
 	viewportWidth = $("#wrapper").innerWidth();
 	viewportHeight = $("#slides li").innerHeight();
+
+// Setup Nav width & offset	
 
 	var totalWidth = calculateTabWidths();
 
@@ -43,24 +49,41 @@ $(document).ready(function($) {
 		navOffsets[i] = navOffsetForIndex(i);
 		tabs[i] = val;
 	});
+
+// ---------
  
 	setupMainSpring();
 	setupPanSupport();
 	setupTabPressedStates();
 	setupArrowKeys();
+
+// Intial Slide positioning
 			
 	$("#slides li").each(function(i, val) {
 		val.style['webkitTransform'] = 'translate3d(' + viewportWidth * i + 'px, 0, 0)';	
 		val.style['MozTransform'] = 'translate3d(' + viewportWidth * i + 'px, 0, 0)';
 		slides[i] = val;
 	});
+
+/*	$("#slides li:not(:first)").each(function(i, val) {
+		val.style['webkitTransform'] = 'translate3d(' + viewportWidth +'px, 0, 0)';	
+		val.style['MozTransform'] = 'translate3d('+ viewportWidth +'px, 0, 0)';
+		console.log("hoo");
+	});
+*/
 	
-	// Select the first tab
+// Select the first tab
 	selectTabIndex(0, false);
 
-	// Behavior when the tabs are clicked
+// Behavior when the tabs are clicked
 	var down = [];
 	
+	$(".textWrapper .raisedButton").each(function(i, val) {
+		$(val).click(function() {
+			selectTabIndex(i+1, true);
+		});
+	});
+
 	$("#nav li").each(function(i, val) {
 		$(val).click(function() {
 			selectTabIndex(i, true);
@@ -96,14 +119,16 @@ $(document).ready(function($) {
 //--Functions-------------------------
 
 setupMainSpring = function() {
+	
 	mainSpring.setSpringConfig(rebound.SpringConfig.fromQcTensionAndFriction(4.5, 5.7));
 	
 	mainSpring.addListener({	
+	    
 	    onSpringUpdate: function (spring) {
 	    	// Progress from 0 to n
 	    	var progress = spring.getCurrentValue();
 
-	    	// Slide the tabs over
+	// NAV: Slide the tabs over
 	   		var xTranslation = transitionForProgressInSteps(progress,navOffsets);
 	   		
 	   		// Pixel snap when the spring is nearing rest on non-retina displays
@@ -113,7 +138,7 @@ setupMainSpring = function() {
 			nav.style['webkitTransform'] = 'translate3d(' + xTranslation + 'px, 0, 0)';
 			nav.style['MozTransform'] = 'translate3d(' + xTranslation + 'px, 0, 0)';
 			
-			// Other transitions
+	// IMAGES + Other transitions
 			$("#slides li").each(function(i, val) {
 				var slideProgress = 1 - Math.abs(progress - i);
 				
@@ -130,7 +155,18 @@ setupMainSpring = function() {
 						var captionOpacity = transitionForProgressInRange(slideProgress,-8.0,1.0);
 						captions[i].style['opacity'] = captionOpacity;
 					}*/
-				} 
+
+				}
+
+				/* else {
+
+					// Slide and scale
+					var x = (i * viewportWidth) - (progress * viewportWidth);
+					var scale = transitionForProgressInRange(slideProgress,0.6,1.0);
+					val.style['opacity'] = 0.5;
+					val.style['webkitTransform'] = 'translate3d(, 0, ' + x + 'px) scale(' + scale +')';
+					val.style['MozTransform'] = 'translate3d(0, 0, ' + x + 'px) scale(' + scale +')';
+				}*/
 								
 				// Hide the off-screen images so they don't reveal themselves if you resize the browser
 				val.style['opacity'] = (slideProgress > 0) ? 1.0 : 0.0;
@@ -142,6 +178,7 @@ setupMainSpring = function() {
 				// Hide/Show Tab links
 				var tabLinkOpacity = transitionForProgressInRange(clampedProgress(slideProgress),0.0,0.6,0);
 				$("#nav li a")[i].style['opacity'] = tabLinkOpacity;
+
 			});
 		}        
 	});
@@ -316,6 +353,16 @@ selectTabIndex = function(i, animated) {
 	} else {
 		mainSpring.setCurrentValue(i);
 	}
+
+	//Navigation Fading
+	var homeTest = $('#slides li.sam').css('opacity');
+	console.log(homeTest);
+	if (homeTest = 1){
+		$('#nav').fadeIn("slow");
+	} else {
+		$('#nav').fadeOut("slow");
+	};
+
 }
 
 navOffsetForIndex = function(i) {
@@ -378,6 +425,9 @@ setupArrowKeys = function() {
 	    	var inRubberbandableRegion = mainSpring.getCurrentValue() > ((tabs.length - 1) - positionTolerance);
 	    
 			if (inRubberbandableRegion && initialPress) {
+
+// Fireworks here!
+
 				isRubberbanding = true;
 				mainSpring.setEndValue(mainSpring.getCurrentValue() + maxRubberbandDistance);
 			} 
@@ -406,6 +456,8 @@ setupArrowKeys = function() {
 	});
 }
 
+
+//------------------------------------------------------------
 // Utilities
 
 progressForValueInRange = function(value, startValue, endValue) {

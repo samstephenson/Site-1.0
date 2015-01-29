@@ -4,9 +4,9 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    -webkit-user-select:none;
+   /* -webkit-user-select:none;
     -webkit-tap-highlight-color:rgba(0,0,0,0);
-    -webkit-text-size-adjust:none;
+    -webkit-text-size-adjust:none;*/
 }
 
 html, button, input, select, textarea {
@@ -57,6 +57,7 @@ textarea {
     color: #000;
     padding: 0.2em 0;
 }
+.preload { opacity: 0; position: absolute; top: -9999px; left: -9999px; }
 
 
 /* ===== Initializr Styles ==================================================
@@ -68,39 +69,65 @@ html {height:100%; width: 100%;}
 body {
     font: 16px/1.6 "Calluna",georgia, sans-serif;
     color: rgba(0,0,0,0.7);
-    background-color: whitesmoke;
     height:100%; width: 100%;
 }
 
-a {color: rgba(0,0,0,0.9);}
+a {
+    color: rgba(0,0,0,0.9);
+    border-bottom: 1px #444 solid;
+    text-decoration: none;
+    cursor: pointer;
+}
 
 h1, h2, h3, h4 {
-    font-family: "AkzidenzGrotesk", Helvetica, sans-serif;
-    font-weight: light;
+    font-family: "Inconsolata", monospace;
 }
 
 h1 {
-    font-size: 2em;
-    margin: 0.5em 0;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    font-size: 1.7em;
+    margin: 1em 0;
 }
 
 p {
     margin: 0.5em 0;
 }
 
-.workButton {
-    margin: 2em -1em 2em 0;
-    background-color: #f1efef;
-    padding: 0.5em 5em 0.7em 2em;
-    font-size: 1.2em;
-    position: absolute;
-    right: 0px;
-    text-decoration: none;
-    border-radius: 10px;
-}
-
 .main {
     padding: 20px 0;
+}
+
+.raisedButton {
+    margin: 1em;
+    display: inline-block;
+    background: #3B8CEA;
+    box-shadow: 0px 1px 0px 0px rgba(0,0,0,0.15), 0px 2px 3px 0px rgba(0,0,0,0.16);
+    border-radius: 3px;
+    color: #FFFFFF;
+    padding: 0.7em 1.2em;
+    font-family: "Inconsolata", monospace;
+    font-size: 16px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    -webkit-transform: translateZ(0); transform: translateZ(0);
+    -webkit-backface-visibility: hidden; backface-visibility: hidden;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-transition-duration: 0.1s; transition-duration: 0.1s;
+    -webkit-transition-property: box-shadow, transform; transition-property: box-shadow, transform;
+}
+.raisedButton.forward {
+}
+
+.raisedButton:hover, .raisedButton:focus {
+    box-shadow: 0px 2px 0px 0px rgba(0,0,0,0.15), 0px 3px 3px 0px rgba(0,0,0,0.16);
+    -webkit-transform: scale(1.03);
+    transform: scale(1.03);
+}
+.raisedButton:active {
+    box-shadow: 0;
+    -webkit-transform: scale(0.98);
+    transform: scale(0.98); 
 }
 
 /*Portfolio Slides ---------------------------------*/
@@ -134,21 +161,32 @@ p {
 
 #slides li.sam {
     margin: -20px 0 -70px 0;
+    display: flex;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-size: 100% auto;
 }
-
 
 .sam .textWrapper {
-    max-width: 24em;
+    max-width: 16em;
     margin: auto;
+    text-align: center;
+    line-height: 1.2;
 }
 
-img.home {
-    max-height:100%; 
-    max-width:100%; 
-    width:auto; 
-    vertical-align: middle; 
-    float: left;
+.dimmed {
+    opacity: 0.2;
 }
+.textWrapper.dimmed .raisedButton {
+    opacity: 0;
+}
+.fullOpacity {
+    opacity: 1;
+}
+
+
+
 
 /*---------*/
 
@@ -158,6 +196,7 @@ img.home {
     left: 50%;
     bottom: 32px;
     white-space: nowrap;
+    -webkit-transition-duration: 0.1s; transition-duration: 0.1s;
 }
 
 #nav li {
@@ -173,18 +212,6 @@ img.home {
     text-decoration: none;
     opacity: 0.7;
 }
-
-.rightPanel {
-    display: flex;
-    background: white;
-    position: absolute;
-    top: 0; right: 30px;
-    width: 100px;
-    height: 100%;
-    border-left: 1px white solid;
-    box-shadow: 0px 0px 2px 0px rgba(0,0,0,0.38), 0px 0px 15px 0px rgba(0,0,0,0.11);
-}
-
 
 
 
@@ -207,8 +234,7 @@ img.home {
 @media only screen and (min-width: 768px) {
 
    body {
-    overflow-y: hidden;
-    font-size: 1.1em;
+    font-size: 1.2em;
    }
 
    .main-container {
@@ -226,7 +252,6 @@ img.home {
    =============== */
 
     .wrapper {
-        width: 1026px; /* 1140px - 10% for margins */
         margin: 0 auto;
     }
 }ie7 .title {
