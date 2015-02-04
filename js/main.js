@@ -28,8 +28,9 @@ $(document).ready(function() {
 		}
 	});
 
+	//$('#slides li:first').css('translate3d(0px, 0px, 0px) scale(1)');
 	
-
+	console.log("nerrr");
 
 });
 
