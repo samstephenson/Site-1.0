@@ -10,53 +10,57 @@
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <link rel="stylesheet" href="css/normalize.min.css">
+        <!--<link rel="stylesheet" href="css/normalize.min.css">-->
         <link rel="stylesheet" href="css/main.css">
 
         <script src="js/vendor/modernizr-2.6.2-respond-1.1.0.min.js"></script>
+
     </head>
     <body>
-        <!--[if lt IE 7]>
-            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
-        <![endif]-->
 
-        <div class="main-container">
+        <div id="wrapper">
 
-            <img class="home" src="img/home3.jpg" alt="Sam Stephenson" />
+        <div class="splash">        
+            <div class="textWrapper">
+                <h1>Sam Stephenson</h1>
 
-            <div class="main wrapper clearfix">
+                <p>I’m a 20 year-old design student currently at Falmouth University.</p>
+                <p>When not at work: I <a class="paddle">paddle</a>, <a class="surf">surf</a> and <a class="explore">explore</a> the outdoors.</p>
+                <p>You can reach me by <a href="mailto:sam@stephenson.net">email here</a>, and other <a>social stuff here</a>.</p>
 
-                <article>
+                <a class="raisedButton forward">Selected Work</a>
+            </div>
+        </div>
 
-                    <h1>Hello! I’m Sam</h1>
+            <ul id="slides">
+                <li class="blank"></li>
+                <li class="jackbeck"></li>
+                <li class="swimmers"></li>
+                <li class="luckington"></li>
+            </ul>
 
-                    <p class="intro">A 20 year-old graphic design student based in Falmouth, England.</p>
+            <ul id="nav">
+                <li>@</li>
+                <li>Jack Beck</li>
+                <li>Cold Water Swimmers</li>
+                <li>Luckington</li>   
+            </ul>
 
-                    <p>Last night for dinner I had fried vegetables – specifically potatoes, tomatoes, mushrooms and spinach. It was satisfying, but only fairly tasty. With that I drank tea. I had porridge for breakfast.</p>
 
-                    <p>I’m currently on the lookout for smart people to spend time around, maybe something’ll rub off? If you fit the bill and can offer a work placement or internship – I’d really love to hear from you.</p>
+        </div> <!-- #wrapper -->
 
-                </article>
+        <div class="preload">
+            <img src="img/homepage/explore.jpg" alt="">
 
-            </div> <!-- #main -->
+            <img src="img/homepage/paddle.jpg" alt="">
 
-            <a class="workButton" href="#">See my Work</a>
+            <img src="img/homepage/surf.jpg" alt="">
+        </div><!-- /.preload -->
 
-        </div> <!-- #main-container -->
-
-        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-        <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.11.1.min.js"><\/script>')</script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+        <script src="js/rebound.js"></script>
+        <script src="js/Walking JS.js"></script>
 
         <script src="js/main.js"></script>
-
-        <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
-        <script>
-            (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
-            function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;
-            e=o.createElement(i);r=o.getElementsByTagName(i)[0];
-            e.src='//www.google-analytics.com/analytics.js';
-            r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
-            ga('create','UA-XXXXX-X');ga('send','pageview');
-        </script>
     </body>
 </html>
