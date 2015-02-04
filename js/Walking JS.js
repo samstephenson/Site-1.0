@@ -9,6 +9,7 @@ var endValue = 0;
 var viewportWidth = 0;
 var viewportHeight = 0;
 var nav;
+var preValue;
 //var imageWidths = [1800,1800,1800,1800,1800,1800];
 //var imageHeights = [900,900,900,900,900,900];
 
@@ -50,6 +51,10 @@ $(document).ready(function($) {
 		tabs[i] = val;
 	});
 
+// Move Slides to Right?
+
+
+
 // ---------
  
 	setupMainSpring();
@@ -64,13 +69,6 @@ $(document).ready(function($) {
 		val.style['MozTransform'] = 'translate3d(' + viewportWidth * i + 'px, 0, 0)';
 		slides[i] = val;
 	});
-
-/*	$("#slides li:not(:first)").each(function(i, val) {
-		val.style['webkitTransform'] = 'translate3d(' + viewportWidth +'px, 0, 0)';	
-		val.style['MozTransform'] = 'translate3d('+ viewportWidth +'px, 0, 0)';
-		console.log("hoo");
-	});
-*/
 	
 // Select the first tab
 	selectTabIndex(0, false);
@@ -78,10 +76,13 @@ $(document).ready(function($) {
 // Behavior when the tabs are clicked
 	var down = [];
 	
-	$(".textWrapper .raisedButton").each(function(i, val) {
-		$(val).click(function() {
-			selectTabIndex(i+1, true);
-		});
+	$('.textWrapper .raisedButton').click(function() {
+		selectTabIndex(1, true);
+	});
+
+	$("#nav li:first-child").click(function() {
+		$('.textWrapper').css('transform', 'scale3d(1,1,1)');
+		$('.textWrapper').css('opacity', '1');
 	});
 
 	$("#nav li").each(function(i, val) {
@@ -116,7 +117,9 @@ $(document).ready(function($) {
 
 });
 
-//--Functions-------------------------
+//-           ------------------------
+//  Functions
+//-           ------------------------
 
 setupMainSpring = function() {
 	
@@ -157,16 +160,6 @@ setupMainSpring = function() {
 					}*/
 
 				}
-
-				/* else {
-
-					// Slide and scale
-					var x = (i * viewportWidth) - (progress * viewportWidth);
-					var scale = transitionForProgressInRange(slideProgress,0.6,1.0);
-					val.style['opacity'] = 0.5;
-					val.style['webkitTransform'] = 'translate3d(, 0, ' + x + 'px) scale(' + scale +')';
-					val.style['MozTransform'] = 'translate3d(0, 0, ' + x + 'px) scale(' + scale +')';
-				}*/
 								
 				// Hide the off-screen images so they don't reveal themselves if you resize the browser
 				val.style['opacity'] = (slideProgress > 0) ? 1.0 : 0.0;
@@ -176,8 +169,8 @@ setupMainSpring = function() {
 				tabs[i].style['opacity'] = tabOpacity;
 
 				// Hide/Show Tab links
-				var tabLinkOpacity = transitionForProgressInRange(clampedProgress(slideProgress),0.0,0.6,0);
-				$("#nav li a")[i].style['opacity'] = tabLinkOpacity;
+				// var tabLinkOpacity = transitionForProgressInRange(clampedProgress(slideProgress),0.0,0.6,0);
+				// $("#nav li a")[i].style['opacity'] = tabLinkOpacity;
 
 			});
 		}        
@@ -341,6 +334,10 @@ releaseDownOnTabIndex = function(index) {
 }
 
 selectTabIndex = function(i, animated) {
+
+	console.log("pre is " + preValue);
+
+
 	if (i < 0)
 		i = 0;
 	else if (i > tabs.length - 1)
@@ -354,15 +351,22 @@ selectTabIndex = function(i, animated) {
 		mainSpring.setCurrentValue(i);
 	}
 
-	//Navigation Fading
-	var homeTest = $('#slides li.sam').css('opacity');
-	console.log(homeTest);
-	if (homeTest = 1){
-		$('#nav').fadeIn("slow");
-	} else {
-		$('#nav').fadeOut("slow");
-	};
+	if (i==0 && preValue != 0) {
+		$('.textWrapper').css('transform', 'scale3d(1,1,1)');
+		$('.textWrapper').css('opacity', '1');
+		navToggle();
+		//areWeHome = true;
+	}// else {areWeHome = false;}
 
+	if (preValue==0 && endValue ==1) {
+		$('.textWrapper').css('transform', 'scale3d(0.5,0.5,1)');
+		$('.textWrapper').css('opacity', '0');
+		navToggle();
+	}
+
+	preValue = i
+
+	console.log(endValue);
 }
 
 navOffsetForIndex = function(i) {
@@ -454,6 +458,11 @@ setupArrowKeys = function() {
 		isRubberBanding = false;
 		initialPress = true;
 	});
+}
+
+
+navToggle = function() {
+		$('#nav').toggleClass('offScreen');
 }
 
 

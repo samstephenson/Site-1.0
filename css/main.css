@@ -92,6 +92,7 @@ h1 {
 
 p {
     margin: 0.5em 0;
+    max-width: 24em;
 }
 
 .main {
@@ -140,39 +141,47 @@ p {
     right:0;
 }
 
+
 #slides li {
     display: inline-block;
     background-size: contain;
     position: fixed;
     background-position: center;
     background-repeat: no-repeat;
-    top: 20px; right: 0; bottom: 70px; left: 0;
+    top: 20px; right: 0; bottom: 100px; left: 0;
+}
+
+#slides li.blank {
+    pointer-events: none;
 }
 
 #slides li.jackbeck {
     background-image: url(../img/jackbeck.png);
 }
-#slides li.bitcoin {
-    background-image: url(../img/jackbeck.png);
+#slides li.swimmers {
+    background-image: url(../img/swimmer.jpg);
 }
 #slides li.luckington {
     background-image: url(../img/jackbeck.png);
 }
 
-#slides li.sam {
+.splash {
     margin: -20px 0 -70px 0;
     display: flex;
     display: flex;
     align-items: center;
     justify-content: center;
     background-size: 100% auto;
+    height: 100%;
 }
 
-.sam .textWrapper {
+.splash .textWrapper {
     max-width: 16em;
     margin: auto;
     text-align: center;
     line-height: 1.2;
+    -webkit-transition: 0.2s ease-out; /* For Safari 3.1 to 6.0 */
+    transition: 0.2s ease-out;
 }
 
 .dimmed {
@@ -196,7 +205,6 @@ p {
     left: 50%;
     bottom: 32px;
     white-space: nowrap;
-    -webkit-transition-duration: 0.1s; transition-duration: 0.1s;
 }
 
 #nav li {
@@ -213,6 +221,9 @@ p {
     opacity: 0.7;
 }
 
+#nav.offScreen {
+    opacity: 0;
+}
 
 
 
