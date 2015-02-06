@@ -80,7 +80,11 @@ $(document).ready(function($) {
 		selectTabIndex(1, true);
 	});
 
-	$("#nav li:first-child").click(function() {
+	$('header h1').click(function() {
+		selectTabIndex(0, true);
+	});
+
+	$("header h1").click(function() {
 		$('.textWrapper').css('transform', 'scale3d(1,1,1)');
 		$('.textWrapper').css('opacity', '1');
 	});
