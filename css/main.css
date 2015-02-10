@@ -37,6 +37,12 @@ hr {
     padding: 0;
 }
 
+.dark {
+    background: #222;
+    color: white;
+    letter-spacing: 0.3px;
+}
+
 /*audio, canvas, img, video {
     vertical-align: middle;
 }*/
@@ -105,6 +111,10 @@ h1 {
      font-weight: 400;
 }
 
+.splash h1 {
+    font-weight: 300;
+}
+
 h2 {
      max-width: 600px;
      margin: 2em auto 1em;
@@ -131,6 +141,11 @@ blockquote {
 div.quote {
      margin: 3em auto;
      background-color: rgba(234, 234, 234, 1);
+}
+
+.textContainer {
+    padding: 4em;
+    width: 100%;
 }
 
 .main {
@@ -186,7 +201,7 @@ div.quote {
     position: fixed;
     background-position: center;
     background-repeat: no-repeat;
-    top: 70px; right: 0; bottom: 20px; left: 0;
+    top: 70px; right: 0; bottom: 0; left: 0;
     overflow-y: scroll;
 }
 
@@ -197,7 +212,6 @@ div.quote {
     /*background-image: url(../img/jackbeck.png);*/
 }
 #slides li.swimmers {
-    background-image: url(../img/swimmer.jpg);
 }
 #slides li.luckington {
     background-image: url(../img/jackbeck.png);
@@ -214,7 +228,7 @@ div.quote {
 }
 
 .splash .textWrapper {
-    max-width: 16em;
+    max-width: 24em;
     margin: auto;
     text-align: center;
     line-height: 1.2;
@@ -242,6 +256,10 @@ img.fullHeight {
     max-height: 100%;
     display: block;
     margin: 0 auto;*/
+}
+img.fullWidth {
+    width: 100%;
+    margin: 0 auto;
 }
 
 img.logo {
