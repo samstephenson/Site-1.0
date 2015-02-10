@@ -466,7 +466,7 @@ setupArrowKeys = function() {
 
 
 navToggle = function() {
-		$('#nav').toggleClass('offScreen');
+		$('header').toggleClass('dimmed');
 }
 
 
